@@ -13,9 +13,11 @@
     
     <h1 class="text-center bg-dark text-white">Sign up User Form</h1>
 <div class="container mt-3">
+     <a class="btn btn-success mt-3 " href="login.php" role="button" style="float: right;">Sign Up</a>
   <div class="row">
-    <div class="col-sm-2"></div>
-    <div class="col-sm-8">  
+    <div class="col-sm-2">       
+    </div>
+    <div class="col-sm-8">
     <?php require_once 'messages.php'?>
     <form action="<?php echo htmlspecialchars("insert.php")?>" name = "myForm" method="post" enctype="multipart/form-data" onsubmit="return (validate());">
 
@@ -54,7 +56,8 @@
   <button type="submit" name="submit" class="btn btn-primary">Submit</button>
     </form> 
     </div> 
-    <div class="col-sm-2"></div>
+    <div class="col-sm-2">
+    </div>
     
   </div>
 </div>

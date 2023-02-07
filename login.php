@@ -50,8 +50,8 @@ if(isset($_POST['submit']))
     <div class="col-sm-3"></div>
     <div class="col-sm-6">
       <form action="login.php" method="post">
-      	<button type="button" class="btn btn-primary btn-lg btn-block mt-3"><i class="fa fa-twitter"></i> Sign in using Open Id Connect</button>
-      	<div class="mt-3 h5" style="text-align: center;"><b>_________________or sign in via email____________________</b></div>
+      	<div class="mt-3 h5" style="text-align: center;"><b>
+        _________________ sign in via email__________________</b></div>
       	<div class="form-group mt-3">
     <label for="exampleInputEmail1">Email address</label>
     <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
@@ -65,6 +65,7 @@ if(isset($_POST['submit']))
     <label class="form-check-label" for="exampleCheck1">Check me out</label>
   </div>
   <button type="submit" name="submit" class="btn btn-success btn-lg btn-block mt-3">Submit</button>
+  <a class="btn btn-primary btn-lg btn-block mt-3" href="form.php" role="button">Sign Up</a>
       </form>
     </div>
     <div class="col-sm-3"></div>

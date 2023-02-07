@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -58,14 +59,14 @@
       </ul>
   </div>
 </nav>
-
-<div class="table-data">
-
+<div class="container">
+<div class="col-sm-1"></div>
+<a class="btn btn-success mt-5 " href="logout.php" role="button" style="float: right;">Logout</a>
+<div class="col-sm-10">
 <h1 class="mt-5 text-center p-3 " > Details of Users  </h1>
-<a href="form.php" style="float: right;" >Insert</a>
 <table border="1px" cellpadding="10px" align="center" cellspacing="o">
   <tr>
-    <th>Name</th>
+    <th>Name</th> 
     <th>Email</th>
     <th>Phone</th>
     <th>Avatar</th>
@@ -92,8 +93,8 @@
    
   ?>
 </table>
-
-
+</div>
+<div class="col-sm-1"></div>
 </div>
 </body>
 </html>
