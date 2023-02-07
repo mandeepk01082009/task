@@ -4,7 +4,7 @@ if(isset($_POST['submit']))
 {
     $email=$_POST['email'];
     $password=$_POST['password'];
-    $query="SELECT * FROM `login` WHERE `email`='$email' AND `password`='$password'";
+    $query="SELECT * FROM `users` WHERE `email`='$email' AND `password`='$password'";
     $run=mysqli_query($con,$query);
     $row=mysqli_num_rows($run);
     if($row == 0)
