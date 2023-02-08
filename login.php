@@ -1,12 +1,14 @@
 <?php
+session_start();
 include('connect.php');
 if(isset($_POST['submit']))
 {
-    $email=$_POST['email'];
+    $email=$_POST['email']; 
     $password=$_POST['password'];
     $query="SELECT * FROM `users` WHERE `email`='$email' AND `password`='$password'";
     $run=mysqli_query($con,$query);
     $row=mysqli_num_rows($run);
+    $_SESSION['login'] = TRUE;
     if($row == 0)
     {
         
@@ -23,8 +25,6 @@ if(isset($_POST['submit']))
      {
          $data=mysqli_fetch_assoc($run);
          $id=$data['id'];
-         
-         session_start();
          $_SESSION['id']=$id;
          header('location:fetch.php');
 
