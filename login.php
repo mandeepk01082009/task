@@ -7,30 +7,15 @@ if(isset($_POST['submit']))
     $password=$_POST['password'];
     $query="SELECT * FROM `users` WHERE `email`='$email' AND `password`='$password'";
     $run=mysqli_query($con,$query);
-    $row=mysqli_num_rows($run);
-    $_SESSION['login'] = TRUE;
-    if($row == 0)
-    {
-        
-        ?>
-        <script>
-        alert('email and password not match !!');
-        window.open('login.php','_self');
-        
-        </script>
-        <?php
+    if (mysqli_num_rows($run)){
+      $_SESSION['login'] = TRUE;
+      header("location:fetch.php");
     }
-     else
-     
-     {
-         $data=mysqli_fetch_assoc($run);
-         $id=$data['id'];
-         $_SESSION['id']=$id;
-         header('location:fetch.php');
-
-
-
-     }
+    else
+    {
+      echo "<script>alert('Email and password are not match!!!')</script>";
+    }
+    
 }
 ?>
 <!DOCTYPE html>
