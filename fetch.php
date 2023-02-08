@@ -35,7 +35,7 @@ if (!isset($_SESSION['login'])) {
       }
     </style>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title></title>
+  <title>User Record</title>
 </head>
 <body>
 <nav class="navbar fixed-top navbar-expand-lg navbar-light  p-3 ">
