@@ -1,10 +1,12 @@
 <?php
-session_start();
 include('connect.php');
+include 'messages.php';
 if(isset($_POST['submit']))
 {
     $email=$_POST['email']; 
     $password=$_POST['password'];
+
+    if(!empty($email) && !empty($password)){
     $query="SELECT * FROM `users` WHERE `email`='$email' AND `password`='$password'";
     $run=mysqli_query($con,$query);
     if (mysqli_num_rows($run)){
@@ -15,7 +17,13 @@ if(isset($_POST['submit']))
     {
       echo "<script>alert('Email and password are not match!!!')</script>";
     }
-    
+  }
+  else{
+    $_SESSION['messages'][] =  'Please fill all the fields!';
+    header('Location:login.php');
+    exit;
+    }
+     
 }
 ?>
 <!DOCTYPE html>
@@ -34,16 +42,18 @@ if(isset($_POST['submit']))
   <div class="row">
     <div class="col-sm-3"></div>
     <div class="col-sm-6">
-      <form action="login.php" method="post">
+      <form action="login.php" method="post" onsubmit="return (validate());" >
       	<div class="mt-3 h5" style="text-align: center;"><b>
         _________________ sign in via email__________________</b></div>
       	<div class="form-group mt-3">
     <label for="exampleInputEmail1">Email address</label>
-    <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    <input type="text" name="email" class="form-control" id="email" aria-describedby="emailHelp">
+    <span id="emailerror" class="text-danger font-weight-bold"></span>
   </div>
   <div class="form-group">
     <label for="exampleInputPassword1">Password</label>
-    <input type="password" name="password" class="form-control" id="exampleInputPassword1">
+    <input type="password" name="password" class="form-control" id="password">
+    <span id="passworderror" class="text-danger font-weight-bold"></span>
   </div>
   <div class="form-group form-check">
     <input type="checkbox" class="form-check-input" id="exampleCheck1">
@@ -56,5 +66,34 @@ if(isset($_POST['submit']))
     <div class="col-sm-3"></div>
   </div>
 </div>
+ <script type="text/javascript">
+    function validate() {
+        var email = document.getElementById('email').value;
+        var password = document.getElementById('password').value;
+
+        var emailcheck = /^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$/;
+        var passwordcheck = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+        
+
+       
+        if (emailcheck.test(email)) {
+            document.getElementById('emailerror').innerHTML = "";
+        }
+        else{
+            document.getElementById('emailerror').innerHTML = "**Email is Invalid."
+            return false;
+        }
+
+        if (passwordcheck.test(password)) {
+            document.getElementById('passworderror').innerHTML = "";
+        }
+        else{
+            document.getElementById('passworderror').innerHTML = "**Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+            return false;
+        }
+
+    }
+    
+</script> 
 </body>
 </html>
