@@ -1,3 +1,8 @@
+<?php
+    session_start();
+    if($_SESSION['login'])
+      {header('location:fetch.php');}
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -114,11 +119,7 @@
 
     }
     //Users can not access login and signup page if they are already logged in . 
-    <?php
-    session_start();
-    if($_SESSION['login'])
-      {header('location:fetch.php');}
-    ?>
+
 </script> 
 </body>
 </html>
