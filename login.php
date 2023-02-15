@@ -1,6 +1,7 @@
 <?php
 include('connect.php');
 include 'messages.php';
+
 if(isset($_POST['submit']))
 {
     $email=$_POST['email']; 
@@ -23,8 +24,9 @@ if(isset($_POST['submit']))
     header('Location:login.php');
     exit;
     }
-     
+  
 }
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -93,6 +95,13 @@ if(isset($_POST['submit']))
         }
 
     }
+    //Users can not access login and signup page if they are already logged in . 
+    <?php
+    if($_SESSION['login'])
+      {header('location:fetch.php');}
+    ?>
+
+
     
 </script> 
 </body>

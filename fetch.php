@@ -83,6 +83,8 @@ if (!isset($_SESSION['login'])) {
   $query = "SELECT * FROM users";
     $data = mysqli_query($con,$query);
     $result =mysqli_num_rows($data);
+    if($result !== 0)
+        {
       while ($row = mysqli_fetch_array($data)) {
         ?>
         <tr>
@@ -95,6 +97,12 @@ if (!isset($_SESSION['login'])) {
            
         <?php
       }
+    }
+    else
+  {
+    echo "can not open user record page";
+    session_destroy();
+  }
    
   ?>
 </table>
